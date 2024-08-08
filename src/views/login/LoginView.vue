@@ -91,7 +91,7 @@ onUnmounted(() => {
 
   .login-btn {
     display: block;
-    margin: 0 auto;
+    margin: 10px auto;
     width: 120px;
     height: 36px;
     border-radius: 20px;
