@@ -40,7 +40,6 @@ const login = () => {
   }).then((res) => {
     if (res.code !== 0) showDialog({ message: res.message })
     else router.replace("/message")
-
   })
 }
 

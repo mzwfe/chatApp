@@ -1,9 +1,9 @@
 <template>
   <div class="tabbar" router>
     <van-tabbar v-model="active" :on-change="changeTabbar(active)">
-      <van-tabbar-item replace to="/message" icon="home-o">消息</van-tabbar-item>
+      <van-tabbar-item replace to="/message" icon="chat-o">消息</van-tabbar-item>
       <van-tabbar-item replace to="/friends" icon="friends-o">好友</van-tabbar-item>
-      <van-tabbar-item replace to="/setting" icon="setting-o">设置</van-tabbar-item>
+      <van-tabbar-item replace to="/setting" icon="contact-o">我</van-tabbar-item>
     </van-tabbar>
 
   </div>
@@ -24,11 +24,6 @@ function changeTabbar(active) {
 
 <style lang="less" scoped>
 .tabbar {
-  position: absolute;
-  height: 40px;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  text-align: center;
+  height: 50px;
 }
 </style>

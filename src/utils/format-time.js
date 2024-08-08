@@ -11,3 +11,7 @@ export default function formatTime(value) {
     return dayjs(value).format("MM月DD日")
   }
 }
+
+export function formatTimeSetting(value) {
+  return dayjs(value).format("YYYY年MM月DD日")
+}

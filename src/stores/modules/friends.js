@@ -2,11 +2,13 @@ import { getFriends } from "@/service/modules/friends"
 import { defineStore } from "pinia"
 
 const useFriendsStore = defineStore("friends", {
-  state: () => ({}),
+  state: () => ({
+    friendList: []
+  }),
   actions: {
     async getFriendsAction() {
       const res = await getFriends()
-      console.log(res)
+      this.friendList = res.data
       return res
     }
   }

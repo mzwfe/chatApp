@@ -1,10 +1,3 @@
-<template>
-  <div class="App">
-    <router-view></router-view>
-    <tabbar v-if="isShowTabbar" />
-  </div>
-</template>
-
 <script setup>
 import { storeToRefs } from 'pinia';
 import Tabbar from './components/tabbar/TabbarView.vue';
@@ -14,6 +7,13 @@ const loginstore = useLoginStore()
 const { isShowTabbar } = storeToRefs(loginstore)
 
 </script>
+
+<template>
+  <div class="App">
+    <router-view></router-view>
+    <tabbar v-if="isShowTabbar" />
+  </div>
+</template>
 
 <style lang="less" scoped>
 

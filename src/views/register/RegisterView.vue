@@ -32,11 +32,20 @@ function submitUserInfo() {
   })
 }
 
+function onClickLeft() {
+  router.push("/login")
+}
+
 </script>
 
 <template>
   <div class="register">
-    <h2 style="text-align: center">注册帐号</h2>
+    <van-nav-bar
+      title="注册帐号"
+      left-text="返回"
+      left-arrow
+      @click-left="onClickLeft"
+    />
     <div class="register-box">
       <label for="account">
         <span>帐号</span>
@@ -68,7 +77,6 @@ function submitUserInfo() {
 
 <style lang="less" scoped>
 .register {
-  margin-top: 50px;
 
   .register-box {
     padding: 60px;
