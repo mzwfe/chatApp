@@ -1,26 +1,20 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="App">
+    <router-view></router-view>
+    <tabbar v-if="isShowTabbar" />
+  </div>
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
+<script setup>
+import { storeToRefs } from 'pinia';
+import Tabbar from './components/tabbar/TabbarView.vue';
+import useLoginStore from './stores/modules/login';
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+const loginstore = useLoginStore()
+const { isShowTabbar } = storeToRefs(loginstore)
+
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="less" scoped>
+
 </style>
