@@ -1,15 +1,8 @@
-<template>
-  <div class="Message">
-    <h2 class="title">chat</h2>
-    <user-message ref="userMessageRef" @refresh-message="handleRefreshMessage" :data-list="messages"></user-message>
-  </div>
-</template>
-
 <script setup>
 import useMessageStore from '@/stores/modules/message'
 import { storeToRefs } from 'pinia'
 import UserMessage from './c-cpns/UserMessage.vue'
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 const messageStore = useMessageStore()
 const { messages } = storeToRefs(messageStore)
@@ -26,10 +19,19 @@ function handleRefreshMessage(loading) {
 
 </script>
 
+
+<template>
+  <div class="Message">
+    <van-nav-bar class="title" title="chat" />
+    <user-message ref="userMessageRef" @refresh-message="handleRefreshMessage"
+      :data-list="messages"></user-message>
+  </div>
+</template>
+
 <style lang="less" scoped>
 .title {
-  text-align: center;
-  padding: 8px 0;
-  border-bottom: 1px solid #ccc;
+  :deep(.van-nav-bar__title) {
+    font-size: 24px;
+  }
 }
 </style>

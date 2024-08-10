@@ -4,7 +4,7 @@ import { formatTimeSetting } from '@/utils/format-time'
 
 const props = defineProps(['userinfo'])
 const imgUrl = computed(() => {
-  return `data:image/png;base64,${props.userinfo.avatarUrl}`
+  return `data:image/png;base64,${props?.userinfo?.avatarUrl}`
 })
 
 </script>
@@ -14,14 +14,14 @@ const imgUrl = computed(() => {
     <div class="userAccount text">
       <span>帐号</span>
       <div>
-        <span>{{ userinfo.userAccount }}</span>
+        <span>{{ userinfo?.userAccount }}</span>
         <van-icon name="arrow" />
       </div>
     </div>
     <div class="username text">
       <span>用户名</span>
       <div>
-        <span>{{ userinfo.username }}</span>
+        <span>{{ userinfo?.username }}</span>
         <van-icon name="arrow" />
       </div>
     </div>
@@ -35,35 +35,35 @@ const imgUrl = computed(() => {
     <div class="gender text">
       <span>性别</span>
       <div>
-        <span>{{ userinfo.gender }}</span>
+        <span>{{ userinfo?.gender }}</span>
         <van-icon name="arrow" />
       </div>
     </div>
     <div class="phone text">
       <span>手机号</span>
       <div>
-        <span>{{ userinfo.phone }}</span>
+        <span>{{ userinfo?.phone }}</span>
         <van-icon name="arrow" />
       </div>
     </div>
     <div class="email text">
       <span>邮箱</span>
       <div>
-        <span>{{ userinfo.email }}</span>
+        <span>{{ userinfo?.email }}</span>
         <van-icon name="arrow" />
       </div>
     </div>
     <div class="tags text">
       <span>用户标签</span>
       <div>
-        <span>{{ userinfo.tags }}</span>
+        <span>{{ userinfo?.tags }}</span>
         <van-icon name="arrow" />
       </div>
     </div>
     <div class="createTime text">
       <span>创建时间</span>
       <div>
-        <span>{{ formatTimeSetting(userinfo.createTime) }}</span>
+        <span>{{ formatTimeSetting(userinfo?.createTime) }}</span>
         <van-icon name="arrow" />
       </div>
     </div>

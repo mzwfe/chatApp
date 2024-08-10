@@ -30,6 +30,13 @@ const router = createRouter({
     {
       path: "/update",
       component: () => import("@/views/update/UpdateView.vue")
+    },
+    {
+      path: "/addFriends",
+      component: () => import("@/views/addFriends/AddFriends.vue")
+    },
+    {
+      path: "/newFriends"
     }
   ]
 })

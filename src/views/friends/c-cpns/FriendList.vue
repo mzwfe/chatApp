@@ -5,7 +5,7 @@ defineProps(['friendList'])
 
 <template>
   <div class="friend-list">
-    <van-index-bar :index-list="Object.keys(friendList)">
+    <van-index-bar :index-list="friendList ? Object.keys(friendList) : []">
       <template v-for="itemX in friendList" :key="itemX">
         <van-index-anchor :index="itemX[0].indexChar" />
         <template v-for="itemY in itemX" :key="itemY.id">
