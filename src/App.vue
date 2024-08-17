@@ -1,7 +1,7 @@
 <script setup>
-import { storeToRefs } from 'pinia';
-import Tabbar from './components/tabbar/TabbarView.vue';
-import useLoginStore from './stores/modules/login';
+import { storeToRefs } from 'pinia'
+import Tabbar from './components/tabbar/TabbarView.vue'
+import useLoginStore from './stores/modules/login'
 
 const loginstore = useLoginStore()
 const { isShowTabbar } = storeToRefs(loginstore)

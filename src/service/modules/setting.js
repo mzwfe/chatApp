@@ -5,3 +5,9 @@ export function getCurrentUserInfo() {
     url: "/user/current"
   })
 }
+
+export function logout() {
+  return zwRequest.post({
+    url: "/user/logout"
+  })
+}

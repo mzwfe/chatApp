@@ -16,6 +16,9 @@
     <div class="register">
       没有账号?去<span class="register-link" @click="registerAccount">注册</span>
     </div>
+    <div class="forget">
+      <span @click="forgetPassword">忘记密码?</span>
+    </div>
   </div>
 </template>
 
@@ -50,6 +53,11 @@ function registerAccount() {
 onUnmounted(() => {
   isShowTabbar.value = true
 })
+
+// 忘记密码逻辑
+function forgetPassword() {
+  router.push("/forgetPassword")
+}
 
 </script>
 
@@ -106,7 +114,13 @@ onUnmounted(() => {
   text-align: center;
 
   .register-link {
-  color: #158be0;
+    color: #158be0;
+  }
 }
+
+.forget {
+  margin-top: 10px;
+  text-align: center;
+  color: #158be0;
 }
 </style>

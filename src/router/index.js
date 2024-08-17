@@ -1,19 +1,18 @@
 import { createRouter, createWebHashHistory } from "vue-router"
 const router = createRouter({
-
   history: createWebHashHistory(),
   routes: [
     {
       path: "/",
-      redirect: "/login"
+      redirect: "/login",
     },
     {
       path: "/login",
-      component: () => import("@/views/login/LoginView.vue")
+      component: () => import("@/views/login/LoginView.vue"),
     },
     {
       path: "/message",
-      component: () => import("@/views/message/MessageView.vue")
+      component: () => import("@/views/message/MessageView.vue"),
     },
     {
       path: "/setting",
@@ -21,24 +20,29 @@ const router = createRouter({
     },
     {
       path: "/friends",
-      component: () => import("@/views/friends/FriendsView.vue")
+      component: () => import("@/views/friends/FriendsView.vue"),
     },
     {
       path: "/register",
-      component: () => import("@/views/register/RegisterView.vue")
+      component: () => import("@/views/register/RegisterView.vue"),
     },
     {
       path: "/update",
-      component: () => import("@/views/update/UpdateView.vue")
+      component: () => import("@/views/update/UpdateView.vue"),
     },
     {
       path: "/addFriends",
-      component: () => import("@/views/addFriends/AddFriends.vue")
+      component: () => import("@/views/addFriends/AddFriends.vue"),
     },
     {
-      path: "/newFriends"
+      path: "/newFriends",
+      component: () => import("@/views/newFriends/NewFriends.vue"),
+    },
+    {
+      path: "/forgetPassword",
+      component: () => import("@/views/forgetPassword/ForgetPassword.vue"),
     }
-  ]
+  ],
 })
 
 export default router

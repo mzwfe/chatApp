@@ -30,6 +30,10 @@ class ZWRequest {
   post(config) {
     return this.requset({ ...config, method: "post" })
   }
+
+  put(config) {
+    return this.requset({ ...config, method: "put" })
+  }
 }
 const zwRequest = new ZWRequest(BASE_URL2, TIME_OUT)
 

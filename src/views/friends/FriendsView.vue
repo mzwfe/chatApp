@@ -5,13 +5,14 @@ import FriendList from './c-cpns/FriendList.vue'
 import useLoginStore from '@/stores/modules/login'
 import { onMounted } from 'vue'
 import router from '@/router'
+import useNewFriendsStore from '@/stores/modules/newFriends'
+
 
 // 底部tabbar可见
 const loginStore = useLoginStore()
 onMounted(() => {
   loginStore.isShowTabbar = true
 })
-
 
 const friendsStore = useFriendsStore()
 const { friendList } = storeToRefs(friendsStore)
@@ -25,8 +26,13 @@ function toAddFriendsPage() {
 
 // 跳转新的朋友验证消息页面
 function toNewAddFriendsPage() {
-  console.log('这是新的朋友消息~')
+  router.push('/newFriends')
 }
+
+// 申请好友列表信息
+const newFriendsStore = useNewFriendsStore()
+const { newFriendsList } = storeToRefs(newFriendsStore)
+newFriendsStore.getNewFriendsAction()
 </script>
 
 <template>
@@ -40,8 +46,11 @@ function toNewAddFriendsPage() {
     </van-cell>
     <van-cell @click="toNewAddFriendsPage">
       <template #title>
-        <van-icon name="user-o" />
-        新的朋友
+        <div class="content">
+          <van-icon name="user-o" />
+          <span class="text">新的朋友</span>
+          <div class="dot" v-if="newFriendsList?.length">{{ newFriendsList?.length }}</div>
+        </div>
       </template>
     </van-cell>
     <friend-list :friend-list="friendList"></friend-list>
@@ -49,4 +58,24 @@ function toNewAddFriendsPage() {
 </template>
 
 
-<style lang="less" scoped></style>
+<style lang="less" scoped>
+.content {
+  display: flex;
+  align-items: center;
+
+  .text {
+    margin-left: 4px;
+  }
+
+  .dot {
+    background-color: #f00;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    color: #fff;
+    margin-left: auto;
+    text-align: center;
+    line-height: 20px;
+  }
+}
+</style>

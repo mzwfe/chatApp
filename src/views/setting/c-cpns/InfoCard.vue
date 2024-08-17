@@ -3,8 +3,13 @@ import { computed } from 'vue'
 import { formatTimeSetting } from '@/utils/format-time'
 
 const props = defineProps(['userinfo'])
+
 const imgUrl = computed(() => {
-  return `data:image/png;base64,${props?.userinfo?.avatarUrl}`
+  if (props.userinfo === null) {
+    return ''
+  } else {
+    return `data:image/png;base64,${props.userinfo.avatarUrl}`
+  }
 })
 
 </script>
