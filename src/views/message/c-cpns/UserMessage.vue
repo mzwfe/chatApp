@@ -1,6 +1,7 @@
 <script setup>
 import { defineProps, ref } from 'vue'
 import formatTime from '@/utils/format-time'
+import router from '@/router'
 
 defineProps(['dataList'])
 const emit = defineEmits(['refreshMessage'])
@@ -10,15 +11,37 @@ function refreshMessage() {
   emit('refreshMessage', loading)
 }
 
+function toChatPage(sessionId, name, type) {
+  if (type === 1) {
+    router.push({
+      path: '/chat',
+      query: {
+        sessionId,
+        name,
+        type
+      }
+    })
+  } else {
+    alert('暂不支持群聊')
+    // router.push({
+    //   path: '/groupChat',
+    //   query: {
+    //     sessionId,
+    //     name,
+    //     type
+    //   }
+    // })
+  }
+}
 </script>
 
 <template>
   <div class="user-message">
     <van-pull-refresh v-model="loading" @refresh="refreshMessage">
-      <template v-for="item in dataList" :key="item.id">
-        <div class="message">
+      <template v-for="item in dataList" :key="item.sessionId">
+        <div class="message" @click="toChatPage(item.sessionId, item.sessionName, item.type)">
           <div class="avatar">
-            <img :src="item.sessionIcon ? `data:image/png;base64,${item.sessionIcon}` : 'https://ts1.cn.mm.bing.net/th/id/R-C.448d85798307dd24a310f80f82f4311a?rik=yX9KaU4s9X4L6A&riu=http%3a%2f%2fimg.touxiangwu.com%2fuploads%2fallimg%2f2022053119%2f2nugfdkcplo.jpg&ehk=UmtIYPBJJIAh0gtt7UxbyuCCOPbFCNOfpQpdCHXBo34%3d&risl=&pid=ImgRaw&r=0'"
+            <img :src="item.sessionIcon"
               alt="" />
             <i class="dot" v-if="item.newMessage[0]?.newMesCount"></i>
           </div>

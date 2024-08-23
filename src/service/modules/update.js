@@ -1,4 +1,4 @@
-import zwRequest from "../request"
+import zwRequest, { zwRequest2 } from "../request"
 
 export function updateUserInfo(userInfo) {
   return zwRequest.post({
@@ -25,6 +25,16 @@ export function forgetSubmit(userInfo) {
       email: userInfo.email,
       password: userInfo.password,
       repeatPassword: userInfo.repeatPassword
+    }
+  })
+}
+
+export function uploadUserAvatar(formdata) {
+  return zwRequest.post({
+    url: "/common/upload",
+    data: formdata,
+    headers: {
+      'Content-Type': 'multipart/form-data'
     }
   })
 }

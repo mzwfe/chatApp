@@ -1,6 +1,6 @@
 <script setup>
 import useLoginStore from '@/stores/modules/login'
-import { onMounted, reactive } from 'vue'
+import { computed, onMounted, reactive, ref } from 'vue'
 import useSettingStore from '@/stores/modules/setting'
 import { storeToRefs } from 'pinia'
 import router from '@/router'
@@ -20,7 +20,6 @@ settingStore.getCurrentUserInfoAction()
 const commitUserInfo = reactive({
   username: userinfo.value.username,
   userId: userinfo.value.id,
-  // avatarUrl: `data:image/png;base64,${userinfo.value.avatarUrl}`,
   gender: userinfo.value.gender,
   updatePassword: userinfo.value.userPassword,
   email: userinfo.value.email,
@@ -37,7 +36,41 @@ function onClickLeft() {
 const updateStore = useUpdateStore()
 
 function handleUpdateUserInfo() {
-  updateStore.updateUserInfoAction(commitUserInfo)
+  updateStore.updateUserInfoAction(commitUserInfo).then(res => {
+    if (res.code === 0) {
+      showDialog({
+        message: '修改个人信息成功'
+      })
+      router.push('/setting')
+    } else {
+      showDialog({
+        message: '修改个人信息失败'
+      })
+    }
+  })
+}
+// 上传头像
+function afterRead(file) {
+  const avatarFormData = new FormData()
+  avatarFormData.append('image', file.file)
+
+  updateStore.uploadUserAvatarAction(avatarFormData).then((res) => {
+    if (res.code === 0) {
+      // 修改本地存储的当前用户信息
+      const userInfo = JSON.parse(localStorage.getItem('currentUserInfo'))
+      userInfo.avatarUrl = res.data
+      localStorage.removeItem('currentUserInfo')
+      localStorage.setItem('currentUserInfo', JSON.stringify(userInfo))
+      // 弹窗提示
+      showDialog({
+        message: '头像上传成功'
+      })
+    } else {
+      showDialog({
+        message: '头像上传失败'
+      })
+    }
+  })
 }
 
 </script>
@@ -52,6 +85,11 @@ function handleUpdateUserInfo() {
       <van-field v-model="commitUserInfo.phone" label="手机号" placeholder="请输入手机号" />
       <van-field v-model="commitUserInfo.gender" label="性别" placeholder="请输入性别" />
       <van-field v-model="commitUserInfo.tags" label="标签" placeholder="请输入标签" />
+      <van-field name="uploader" label="头像上传">
+        <template #input>
+          <van-uploader :after-read="afterRead" />
+        </template>
+      </van-field>
       <div class="btn">
         <van-button type="primary" @click="handleUpdateUserInfo">确定修改</van-button>
       </div>

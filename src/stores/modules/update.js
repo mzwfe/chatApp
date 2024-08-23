@@ -1,4 +1,4 @@
-import { forgetSubmit, getCaptcha, updateUserInfo } from "@/service/modules/update"
+import { forgetSubmit, getCaptcha, updateUserInfo, uploadUserAvatar } from "@/service/modules/update"
 import { defineStore } from "pinia"
 
 const useUpdateStore = defineStore('update', {
@@ -16,6 +16,11 @@ const useUpdateStore = defineStore('update', {
     },
     async forgetSubmitAction(userInfo) {
       const res = await forgetSubmit(userInfo)
+
+      return res
+    },
+    async uploadUserAvatarAction(formdata) {
+      const res = await uploadUserAvatar(formdata)
 
       return res
     }

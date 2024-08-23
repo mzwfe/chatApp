@@ -2,12 +2,19 @@
 import useMessageStore from '@/stores/modules/message'
 import { storeToRefs } from 'pinia'
 import UserMessage from './c-cpns/UserMessage.vue'
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
+import useLoginStore from '@/stores/modules/login'
 
 const messageStore = useMessageStore()
 const { messages } = storeToRefs(messageStore)
 
 messageStore.getUserMessages()
+
+// 底部tabbar可见
+const loginStore = useLoginStore()
+onMounted(() => {
+  loginStore.isShowTabbar = true
+})
 
 // 处理下拉刷新
 const userMessageRef = ref()

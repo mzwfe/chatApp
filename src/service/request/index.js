@@ -6,7 +6,7 @@ class ZWRequest {
     this.instance = axios.create({
       baseURL,
       timeout,
-      withCredentials: true,
+      withCredentials: true
     })
   }
 

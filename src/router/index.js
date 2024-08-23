@@ -41,7 +41,14 @@ const router = createRouter({
     {
       path: "/forgetPassword",
       component: () => import("@/views/forgetPassword/ForgetPassword.vue"),
-    }
+    },
+    {
+      path: "/chat",
+      component: () => import("@/views/chat/ChatView.vue"),
+      query: {
+        id: ""
+      }
+    },
   ],
 })
 

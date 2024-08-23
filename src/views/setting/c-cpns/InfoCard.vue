@@ -1,16 +1,7 @@
 <script setup>
-import { computed } from 'vue'
 import { formatTimeSetting } from '@/utils/format-time'
 
 const props = defineProps(['userinfo'])
-
-const imgUrl = computed(() => {
-  if (props.userinfo === null) {
-    return ''
-  } else {
-    return `data:image/png;base64,${props.userinfo.avatarUrl}`
-  }
-})
 
 </script>
 
@@ -33,7 +24,7 @@ const imgUrl = computed(() => {
     <div class="avatar">
       <span>头像</span>
       <div>
-        <img :src="imgUrl" alt="">
+        <img :src="userinfo.avatarUrl" alt="">
         <van-icon name="arrow" />
       </div>
     </div>

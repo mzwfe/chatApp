@@ -10,6 +10,8 @@ const useLoginStore = defineStore("login", {
   actions: {
     async commitAccountAction(config) {
       const res = await commitAccount(config)
+
+      localStorage.setItem("currentUserInfo", JSON.stringify(res.data))
       return res
     }
   }
