@@ -24,7 +24,7 @@ const props = defineProps(['userinfo'])
     <div class="avatar">
       <span>头像</span>
       <div>
-        <img :src="userinfo.avatarUrl" alt="">
+        <img :src="userinfo?.avatarUrl" alt="">
         <van-icon name="arrow" />
       </div>
     </div>
