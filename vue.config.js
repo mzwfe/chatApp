@@ -28,5 +28,5 @@ module.exports = defineConfig({
       }),
       Components.default({ resolvers: [VantResolver()] }),
     ],
-  },
+  }
 })
